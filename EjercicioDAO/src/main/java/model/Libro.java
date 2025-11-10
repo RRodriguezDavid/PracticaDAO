@@ -10,11 +10,21 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public int getId() { return id; }
-    public String getTitulo() { return titulo; }
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) { this.id = id; }
-    public void setTitulo(String titulo) { this.titulo = titulo; }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
     @Override
     public String toString() {
