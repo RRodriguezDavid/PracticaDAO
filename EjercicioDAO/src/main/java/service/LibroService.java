@@ -4,10 +4,10 @@ import dao.LibroDAO;
 import model.Libro;
 import java.util.List;
 
-public class BibliotecaService {
-    private LibroDAO libroDAO;
+public class LibroService {
+    private final LibroDAO libroDAO;
 
-    public BibliotecaService(LibroDAO libroDAO) {
+    public LibroService(LibroDAO libroDAO) {
         this.libroDAO = libroDAO;
     }
 
