@@ -1,18 +1,28 @@
 
 package org.example;
 
-import dao.LibroDAO;
-import dao.LibroDAOImpl;
-import model.Libro;
-import service.BibliotecaService;
+import dao.*;
+import service.AutorService;
+import service.LibroService;
+import service.PrestamoService;
+import service.UsuarioService;
 
 import java.util.Scanner;
 
 public class Main {
     private static Scanner sc = new Scanner(System.in);
+    static LibroDAO libroDAO = new LibroDAOImpl();
+    static UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+    static AutorDAO autorDAO = new AutorDAOImpl();
+    static PrestamoDAO prestamoDAO = new PrestamoDAOImpl();
+
+    static LibroService servicioLibro = new LibroService(libroDAO);
+    static AutorService servicioAutor = new AutorService(autorDAO);
+    static PrestamoService servicioPrestamo = new PrestamoService(prestamoDAO);
+    static UsuarioService servicioUsuario = new UsuarioService(usuarioDAO);
+
     public static void main(String[] args) {
-        LibroDAO libroDAO = new LibroDAOImpl();
-        BibliotecaService servicio = new BibliotecaService(libroDAO);
+
         int opcion;
 
         do {
@@ -52,7 +62,6 @@ public class Main {
             }
         } while (opcion != 0);
     }
-
     private static void crudLibro() {
 
         while (true) {
@@ -69,22 +78,25 @@ public class Main {
             int eleccion =  sc.nextInt(); sc.nextLine();
             switch (eleccion) {
                 case 1 -> {
-
+                    System.out.print("Título: ");
+                    String titulo = sc.nextLine();
+                    servicioLibro.registrarLibro(titulo);
                 }
-                case 2 -> {
-
-                }
+                case 2 -> servicioLibro.listarLibros().forEach(System.out::println);
                 case 3 -> {
-
+                    System.out.print("ID del libro: ");
+                    int id = sc.nextInt(); sc.nextLine();
+                    System.out.print("Nuevo título: ");
+                    String nuevo = sc.nextLine();
+                    servicioLibro.cambiarTitulo(id, nuevo);
                 }
                 case 4 -> {
-
+                    System.out.print("ID del libro a eliminar: ");
+                    int id = sc.nextInt(); sc.nextLine();
+                    servicioLibro.eliminarLibro(id);
                 }
-                case 0 ->{
-                    System.out.println("Saliendo...");
-                    break;
-                }
-                default -> System.out.println("Opcion no valida");
+                case 0 -> System.out.println("Saliendo...");
+                default -> System.out.println("Opción no válida");
             }
         }
     }
@@ -103,22 +115,25 @@ public class Main {
             int eleccion =  sc.nextInt(); sc.nextLine();
             switch (eleccion) {
                 case 1 -> {
-
+                    System.out.print("Título: ");
+                    String titulo = sc.nextLine();
+                    servicioAutor.registrarAutor(titulo);
                 }
-                case 2 -> {
-
-                }
+                case 2 -> servicioAutor.listarLibros().forEach(System.out::println);
                 case 3 -> {
-
+                    System.out.print("ID del libro: ");
+                    int id = sc.nextInt(); sc.nextLine();
+                    System.out.print("Nuevo título: ");
+                    String nuevo = sc.nextLine();
+                    servicioAutor.cambiarTitulo(id, nuevo);
                 }
                 case 4 -> {
-
+                    System.out.print("ID del libro a eliminar: ");
+                    int id = sc.nextInt(); sc.nextLine();
+                    servicioAutor.eliminarLibro(id);
                 }
-                case 0 ->{
-                    System.out.println("Saliendo...");
-                    break;
-                }
-                default -> System.out.println("Opcion no valida");
+                case 0 -> System.out.println("Saliendo...");
+                default -> System.out.println("Opción no válida");
             }
         }
     }
@@ -137,22 +152,25 @@ public class Main {
             int eleccion =  sc.nextInt(); sc.nextLine();
             switch (eleccion) {
                 case 1 -> {
-
+                    System.out.print("Título: ");
+                    String titulo = sc.nextLine();
+                    servicioPrestamo.registrarAutor(titulo);
                 }
-                case 2 -> {
-
-                }
+                case 2 -> servicioPrestamo.listarLibros().forEach(System.out::println);
                 case 3 -> {
-
+                    System.out.print("ID del libro: ");
+                    int id = sc.nextInt(); sc.nextLine();
+                    System.out.print("Nuevo título: ");
+                    String nuevo = sc.nextLine();
+                    servicioPrestamo.cambiarTitulo(id, nuevo);
                 }
                 case 4 -> {
-
+                    System.out.print("ID del libro a eliminar: ");
+                    int id = sc.nextInt(); sc.nextLine();
+                    servicioPrestamo.eliminarLibro(id);
                 }
-                case 0 ->{
-                    System.out.println("Saliendo...");
-                    break;
-                }
-                default -> System.out.println("Opcion no valida");
+                case 0 -> System.out.println("Saliendo...");
+                default -> System.out.println("Opción no válida");
             }
         }
     }
@@ -171,22 +189,25 @@ public class Main {
             int eleccion =  sc.nextInt(); sc.nextLine();
             switch (eleccion) {
                 case 1 -> {
-
+                    System.out.print("Título: ");
+                    String titulo = sc.nextLine();
+                    servicioAutor.registrarAutor(titulo);
                 }
-                case 2 -> {
-
-                }
+                case 2 -> servicioAutor.listarLibros().forEach(System.out::println);
                 case 3 -> {
-
+                    System.out.print("ID del libro: ");
+                    int id = sc.nextInt(); sc.nextLine();
+                    System.out.print("Nuevo título: ");
+                    String nuevo = sc.nextLine();
+                    servicioAutor.cambiarTitulo(id, nuevo);
                 }
                 case 4 -> {
-
+                    System.out.print("ID del libro a eliminar: ");
+                    int id = sc.nextInt(); sc.nextLine();
+                    servicioAutor.eliminarLibro(id);
                 }
-                case 0 ->{
-                    System.out.println("Saliendo...");
-                    break;
-                }
-                default -> System.out.println("Opcion no valida");
+                case 0 -> System.out.println("Saliendo...");
+                default -> System.out.println("Opción no válida");
             }
         }
     }
