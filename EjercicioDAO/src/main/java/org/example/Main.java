@@ -43,18 +43,22 @@ public class Main {
             switch (opcion) {
                 case 1 -> {
                     System.out.print("Libro: ");
+                    System.out.println("");
                     crudLibro();
                 }
                 case 2 ->{
                     System.out.print("Autor: ");
+                    System.out.println("");
                     crudAutor();
                 }
                 case 3 -> {
                     System.out.print("Uusario:");
+                    System.out.println("");
                     crudUsuario();
                 }
                 case 4 -> {
                     System.out.print("Prestamo ");
+                    System.out.println("");
                     crudPrestamo();
                 }
                 case 0 -> System.out.println("Saliendo...");
@@ -115,22 +119,22 @@ public class Main {
             int eleccion =  sc.nextInt(); sc.nextLine();
             switch (eleccion) {
                 case 1 -> {
-                    System.out.print("Título: ");
-                    String titulo = sc.nextLine();
-                    servicioAutor.registrarAutor(titulo);
+                    System.out.print("Nombre: ");
+                    String nombre = sc.nextLine();
+                    servicioUsuario.registrarUsuario(nombre);
                 }
-                case 2 -> servicioAutor.listarLibros().forEach(System.out::println);
+                case 2 -> servicioUsuario.listarUsuarios().forEach(System.out::println);
                 case 3 -> {
-                    System.out.print("ID del libro: ");
+                    System.out.print("ID usuario: ");
                     int id = sc.nextInt(); sc.nextLine();
-                    System.out.print("Nuevo título: ");
+                    System.out.print("Nuevo nombre: ");
                     String nuevo = sc.nextLine();
-                    servicioAutor.cambiarTitulo(id, nuevo);
+                    servicioUsuario.cambiarNombre(id, nuevo);
                 }
                 case 4 -> {
-                    System.out.print("ID del libro a eliminar: ");
+                    System.out.print("ID del usuario a eliminar: ");
                     int id = sc.nextInt(); sc.nextLine();
-                    servicioAutor.eliminarLibro(id);
+                    servicioUsuario.eliminarUsuario(id);
                 }
                 case 0 -> System.out.println("Saliendo...");
                 default -> System.out.println("Opción no válida");
@@ -153,21 +157,29 @@ public class Main {
             switch (eleccion) {
                 case 1 -> {
                     System.out.print("Título: ");
-                    String titulo = sc.nextLine();
-                    servicioPrestamo.registrarAutor(titulo);
+                    int cantidasSemanas = sc.nextInt(); sc.nextLine();
+                    System.out.println("id Usuario: ");
+                    int idUsuario = sc.nextInt(); sc.nextLine();
+                    System.out.println("id Libro: ");
+                    int idLibro = sc.nextInt(); sc.nextLine();
+                    servicioPrestamo.registrarPrestamo(cantidasSemanas, idUsuario, idLibro);
                 }
-                case 2 -> servicioPrestamo.listarLibros().forEach(System.out::println);
+                case 2 -> servicioPrestamo.listarPrestamos().forEach(System.out::println);
                 case 3 -> {
                     System.out.print("ID del libro: ");
                     int id = sc.nextInt(); sc.nextLine();
-                    System.out.print("Nuevo título: ");
-                    String nuevo = sc.nextLine();
-                    servicioPrestamo.cambiarTitulo(id, nuevo);
+                    System.out.print("Año: ");
+                    String anno = sc.nextLine();
+                    System.out.println("Mes");
+                    String mes = sc.nextLine();
+                    System.out.println("Dia");
+                    String dia = sc.nextLine();
+                    servicioPrestamo.cambiarFechaFin(id,anno,mes,dia );
                 }
                 case 4 -> {
                     System.out.print("ID del libro a eliminar: ");
                     int id = sc.nextInt(); sc.nextLine();
-                    servicioPrestamo.eliminarLibro(id);
+                    servicioPrestamo.eliminarPrestamo(id);
                 }
                 case 0 -> System.out.println("Saliendo...");
                 default -> System.out.println("Opción no válida");
@@ -189,27 +201,26 @@ public class Main {
             int eleccion =  sc.nextInt(); sc.nextLine();
             switch (eleccion) {
                 case 1 -> {
-                    System.out.print("Título: ");
-                    String titulo = sc.nextLine();
-                    servicioAutor.registrarAutor(titulo);
+                    System.out.print("Nombre: ");
+                    String nombre = sc.nextLine();
+                    servicioAutor.registrarAutor(nombre);
                 }
-                case 2 -> servicioAutor.listarLibros().forEach(System.out::println);
+                case 2 -> servicioAutor.listarAutores().forEach(System.out::println);
                 case 3 -> {
-                    System.out.print("ID del libro: ");
+                    System.out.print("ID del Autor: ");
                     int id = sc.nextInt(); sc.nextLine();
-                    System.out.print("Nuevo título: ");
+                    System.out.print("Nuevo nombre: ");
                     String nuevo = sc.nextLine();
-                    servicioAutor.cambiarTitulo(id, nuevo);
+                    servicioAutor.cambiarNombre(id, nuevo);
                 }
                 case 4 -> {
-                    System.out.print("ID del libro a eliminar: ");
+                    System.out.print("ID del Autor a eliminar: ");
                     int id = sc.nextInt(); sc.nextLine();
-                    servicioAutor.eliminarLibro(id);
+                    servicioAutor.eliminarAutor(id);
                 }
                 case 0 -> System.out.println("Saliendo...");
                 default -> System.out.println("Opción no válida");
             }
         }
     }
-
 }
