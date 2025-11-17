@@ -26,7 +26,6 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    @Override
     public String toString() {
         return "ID=" + id + ", Título='" + titulo + "'";
     }
